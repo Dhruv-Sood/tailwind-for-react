@@ -30,34 +30,29 @@ module.exports = {
   ],
   theme: {
     extend: {},
-  },
+  ],
   plugins: [],
 };
   `;
   fs.writeFileSync(tailwindConfigPath, tailwindConfigContent.trim());
   console.log("Updated `tailwind.config.js` with template paths.");
 
-  // Add Tailwind directives to `src/index.css`
+  // Add Tailwind directives to `src/index.css` (overwrite mode)
   const cssFilePath = path.resolve("src", "index.css");
   const tailwindDirectives = `
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
   `;
-  if (fs.existsSync(cssFilePath)) {
-    const existingCss = fs.readFileSync(cssFilePath, "utf8");
-    if (!existingCss.includes("@tailwind base;")) {
-      fs.appendFileSync(cssFilePath, tailwindDirectives.trim());
-      console.log("Added Tailwind directives to `src/index.css`.");
-    } else {
-      console.log("Tailwind directives already exist in `src/index.css`.");
-    }
+  if (!fs.existsSync(cssFilePath)) {
+    console.log("Creating a new `src/index.css` file...");
   } else {
-    console.error(
-      "Error: `src/index.css` not found. Please ensure it exists in your React project."
-    );
-    process.exit(1);
+    console.log("Overwriting the existing `src/index.css` file...");
   }
+  fs.writeFileSync(cssFilePath, tailwindDirectives.trim());
+  console.log(
+    "Added Tailwind directives to `src/index.css`, replacing existing content."
+  );
 
   console.log("Tailwind CSS setup/update complete!");
 };
