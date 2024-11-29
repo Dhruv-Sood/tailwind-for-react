@@ -1,6 +1,6 @@
 {
   "name": "tailwind-for-react",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automatically set up or update Tailwind CSS in any React project.",
   "main": "index.js",
   "bin": {
@@ -14,5 +14,13 @@
   ],
   "author": "Your Name",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhruv-Sood/tailwind-for-react"
+  },
+  "bugs": {
+    "url": "https://github.com/Dhruv-Sood/tailwind-for-react/issues"
+  },
+  "homepage": "https://github.com/Dhruv-Sood/tailwind-for-react#readme"
 }
